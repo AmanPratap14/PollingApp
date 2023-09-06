@@ -56,6 +56,10 @@ Before you begin, ensure you have met the following requirements:
 Start the application:
  # npm start
     Access the application in your browser at http://localhost:4000. on postman
+    You SHould Seen Somthing Like This in Console:- 
+            Mongoose: users.createIndex({ username: 1 }, { unique: true, background: true })
+            Mongoose: polls.createIndex({ title: 1 }, { unique: true, background: true })
+            Mongoose: users.createIndex({ password: 1 }, { unique: true, background: true })
 
  -Authentication
     #/api/auth/register: Register a new user.
