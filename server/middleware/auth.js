@@ -1,26 +1,26 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-module.exports.auth  = async function (req, res, next) {
-  try {
-    const bearerHeader = req.header("Authorization", "Bearer Token");
+module.exports = (req, res, next) => {
+  if (req.headers['authorization']) {
+    const token = req.headers['authorization'].split(' ')[1];
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+      if (err) {
+         res.json({
+           success: false,
+           message: 'Failed to authenticate token',
+        });
+        next(Error('Failed to authenticate token'));
+      } else {
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+    res.status(403).json({
+      status: false,
+      message: 'No token provided',
+     });
 
-    if (!bearerHeader) {
-      return res.status(400).send({ status: false, msg: "token is required" });
-    }
-    const bearer = bearerHeader.split(" ");
-    const token = bearer[1];
-    let decoetoken = jwt.verify(token, process.env.SECRET);
-    if (!decodetoken) {
-      return res
-        .status(401)
-        .send({ status: false, msg: "please enter the right token" });
-    }
-
-    console.log(decodetoken.userId);
-
-    req.userId = decodetoken.userId;
-    next();
-  } catch (error) {
-    return res.status(500).send({ status: false, msg: error.message });
+    next(Error('No token provided'));
   }
 };
