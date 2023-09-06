@@ -54,23 +54,23 @@ Before you begin, ensure you have met the following requirements:
 
 -Usage
 Start the application:
-  npm start
+ # npm start
     Access the application in your browser at http://localhost:4000. on postman
 
  -Authentication
-    /api/auth/register: Register a new user.
-    /api/auth/login: Log in as a registered user.
-    /api/auth/logout: Log out the current user.
+    #/api/auth/register: Register a new user.
+    #/api/auth/login: Log in as a registered user.
+    #/api/auth/logout: Log out the current user.
 
 -Poll Management
-  /api/polls: List all available polls.
-  /api/polls/:id: Get poll details and vote.
+  #/api/polls: List all available polls.
+  #/api/polls/:id: Get poll details and vote.
 
 Database
-This project uses a MongoDB/MySQL database to store user accounts and poll data. You can find the database schemas in the models directory.
+#This project uses a MongoDB/MySQL database to store user accounts and poll data. You can find the database schemas in the models directory.
 
 Contributing
-Contributions are welcome! Feel free to open issues or pull requests to improve this project.
+#Contributions are welcome! Feel free to open issues or pull requests to improve this project.
 
 ## Installation
 1. Clone the repository:
