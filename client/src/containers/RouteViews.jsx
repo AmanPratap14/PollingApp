@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route ,Routes, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { getCurrentPoll } from '../store/actions';
 import HomePage from '../pages/HomePage';
@@ -11,7 +11,7 @@ import TestPage from '../pages/TestPage';
 
 const RouteViews = ({ getCurrentPoll, auth }) => (
   <main className="container">
-    <Routes>
+    <Switch>
       <Route exact path="/" render={props => <HomePage {...props} />} />
       <Route
         exact
@@ -43,7 +43,7 @@ const RouteViews = ({ getCurrentPoll, auth }) => (
         )}
       />
       <Route exact path="/test" render={() => <TestPage />} />
-    </Routes>
+    </Switch>
   </main>
 );
 

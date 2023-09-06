@@ -1,26 +1,32 @@
-require("dotenv").config();
-
 const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const cors = require("cors");
-const bodyParser = require("body-parser");
-
-const routes = require("./routes");
-const handle = require("./handlers");
-
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+// Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use("/api/auth", routes.auth);
-app.use("/api/polls", routes.poll);
+// Connect to MongoDB  (Default: mongodb://localhost/): vote
+mongoose
+  .connect(process.env.DATABASE)
+  .then(() => console.log("MongoDb is connected"))
+  .catch((err) => console.log(err));
 
-app.use((req, res, next) => {
-  let err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+
+// Load routes
+const userRoutes = require("./routes/userRoutes");
+const pollRoutes = require("./routes/pollRoutes");
+const voteRoutes = require("./routes/voteRoutes");
+
+// Use routes
+app.use("/", userRoutes);
+app.use("/", pollRoutes);
+app.use("/", voteRoutes);
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-app.use(handle.error);
-
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

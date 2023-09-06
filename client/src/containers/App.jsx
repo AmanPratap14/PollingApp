@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import decode from 'jwt-decode';
-import { BrowserRouter as Router, Routes,} from 'react-router-dom';
-
 
 import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
