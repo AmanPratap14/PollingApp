@@ -14,6 +14,11 @@ const pollSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  title:
+  {
+    type: String,
+    unique: true 
+  },
   created: {
     type: Date,
     default: Date.now,
