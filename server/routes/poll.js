@@ -3,6 +3,7 @@ const handle = require("../handlers");
 const auth = require("../middleware/auth");
 
 router.route("/").get(handle.showPolls).post(auth, handle.createPoll);
+// for eveypoll
 
 router.get("/user", auth, handle.usersPolls);
 
