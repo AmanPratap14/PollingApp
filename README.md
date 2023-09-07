@@ -57,9 +57,20 @@ Start the application:
  # npm start
     Access the application in your browser at http://localhost:4000. on postman
     You SHould Seen Somthing Like This in Console:- 
-            Mongoose: users.createIndex({ username: 1 }, { unique: true, background: true })
-            Mongoose: polls.createIndex({ title: 1 }, { unique: true, background: true })
-            Mongoose: users.createIndex({ password: 1 }, { unique: true, background: true })
+            ""Mongoose: users.createIndex({ username: 1 }, { unique: true, background: true })
+                Mongoose: polls.createIndex({ title: 1 }, { unique: true, background: true })
+                Mongoose: users.createIndex({ password: 1 }, { unique: true, background: true })
+            Server listening on port 4000
+            Mongoose: users.createIndex({ username: 1 }, { unique:
+            Mongoose: polls.createIndex({ title: 1 }, { unique: tr
+            Mongoose: users.createIndex({ password: 1 }, { unique:
+            Mongoose: users.insertOne({ username: 'aman', passwordaf9bae594"), created: new Date("Wed, 06 Sep 2023 18:12
+            Mongoose: users.insertOne({ username: 'aman1', passworaaf9bae596"), created: new Date("Wed, 06 Sep 2023 18:1
+            af9bae59d"), created: new Date("Wed, 06 Sep 2023 18:20:00 GMT"), __v: 0}, {})
+            Mongoose: polls.find({}, {})
+            Mongoose: users.find({ _id: { '$in': [ ObjectId("64f781f8796ba7878d0170eb"), null ], [Symbol(mongoose#trustedSymbol)]: true }}, { skip: undefined, limit: undefin}, { skip: undefined, limit: undefined, perDocumentLimit: undefined, projection: { username: 1, id: 1 }})
+            Mongoose: users.findOne({ username: 'aman1' }, {})
+            Mongoose: users.insertOne({ username: 'aman1', password: '$2a$10$KF4g89jwSMaKCHFIGyBC.ey0.Si9QXvIZsrc8UPmKT/hALuyHhwly', polls: [], _id: ObjectId("64f8c3bac455e2s: [], _id: ObjectId("64f8c3bac455e2aaf9bae5af"), created: new Date("Wed, 06 Sep 2023 18:23:54 GMT"), __v: 0}, {})""
 
  -Authentication
     #/api/auth/register: Register a new user.
