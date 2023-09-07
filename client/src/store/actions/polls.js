@@ -15,15 +15,28 @@ export const setCurrentPoll = poll => ({
 export const getPolls = () => {
   return async dispatch => {
     try {
-      const polls = await API.call('get', `polls`);
-      dispatch(setPolls(polls));
-      dispatch(removeError());
+      const response = await API.call('get', 'polls');
+      const { data } = response; // Destructure the 'data' property from the response
+
+      if (data) {
+        dispatch(setPolls(data));
+        dispatch(removeError());
+      } else {
+        // Handle the case where 'data' is undefined or falsy
+        dispatch(addError('No data received from the server.'));
+      }
     } catch (err) {
-      const { error } = err.response.data;
-      dispatch(addError(error));
+      if (err.response && err.response.data) {
+        const { error } = err.response.data;
+        dispatch(addError(error));
+      } else {
+        // Handle other types of errors here if needed
+        dispatch(addError('An error occurred while fetching data.'));
+      }
     }
   };
 };
+
 
 export const getUserPolls = () => {
   return async dispatch => {
